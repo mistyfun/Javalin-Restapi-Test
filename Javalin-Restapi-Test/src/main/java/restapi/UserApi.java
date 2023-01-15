@@ -8,6 +8,7 @@ public class UserApi {
         UserController userController = new UserController(userService);
         var app = Javalin.create(/*config*/)
                 .get("/users", userController::listAll)
+                .get("/users/{userId}", userController::listOne)
                 .start(7070);
     }
 }
