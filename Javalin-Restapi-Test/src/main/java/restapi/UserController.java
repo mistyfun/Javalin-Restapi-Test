@@ -19,14 +19,13 @@ public class UserController {
 
     public void listOne(Context context) {
         String userIdFromBrowser = context.pathParam("userId");
-        Set<User> users = userService.users;
-        for (User user : users) {
-            if (userIdFromBrowser.equals(user.id())) {
-                context.json(user);
-                return;
-            }
+        User user = userService.getUser(userIdFromBrowser);
+        if (user != null) {
+            context.json(user);
+        } else {
+            context.status(404).result("user not found");
         }
-        context.status(404).result("user not found");
+
     }
 
     public void create(Context context) {

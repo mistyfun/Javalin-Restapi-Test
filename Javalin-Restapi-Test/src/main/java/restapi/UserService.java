@@ -18,4 +18,13 @@ public class UserService {
         return users.removeIf(user -> user.id().equals(userId));
     }
 
+    public User getUser(String userId) {
+        for (User user : users) {
+            if (userId.equals(user.id())) {
+                return user;
+            }
+        }
+        return null;
+    }
+
 }
