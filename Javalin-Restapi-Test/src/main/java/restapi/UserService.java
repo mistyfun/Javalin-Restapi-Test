@@ -14,4 +14,8 @@ public class UserService {
             )
     );
 
+    public Boolean removeUser(String userId) {
+        return users.removeIf(user -> user.id().equals(userId));
+    }
+
 }

@@ -29,4 +29,23 @@ public class UserController {
         context.status(404).result("user not found");
     }
 
+    public void create(Context context) {
+
+    }
+
+    public void update(Context context) {
+
+    }
+
+    public void delete(Context context) {
+        String userIdFromBrowser = context.pathParam("userId");
+        boolean deleted = userService.removeUser(userIdFromBrowser);
+        if (deleted) {
+            context.status(204);
+        } else {
+            context.status(404).result("user not found");
+        }
+
+    }
+
 }
